@@ -1,0 +1,20 @@
+# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app imageID
+version: '3'
+services: 
+  web:
+    build: 
+      context: . #From which relative path docker will look for "Dockerfile.dev" file
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "3001:3000"
+    volumes: 
+      - /app/node_modules
+      - .:/app
+  test:
+    build: 
+      context: . #From which relative path docker will look for "Dockerfile.dev" file
+      dockerfile: Dockerfile.dev
+    volumes: 
+      - /app/node_modules
+      - .:/app
+    command: npm run test

@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save reload.
         </p>
         <a
           className="App-link"
@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React & Dockers
         </a>
       </header>
     </div>
@@ -23,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+// docker run -p 3000:3000 -v app/node_modules -v $(pwd):/app/node_modules 413894c6584861d334ea9f55652ed5cd9648d6516dd45d703796569b8992d0fd
