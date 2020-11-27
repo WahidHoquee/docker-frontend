@@ -1,0 +1,18 @@
+# To use docker we need Super User Permission. So we are taking Super user permission from TravisCI
+sudo: required
+
+# To start/install docker service in the Travis CI container. Behind the scene travisCI also has a container
+services:
+  - docker
+
+# Here we declare series of steps/commands executed before deploying or testing the project
+before_install:
+  # We are declaring - t(tag) because there is no way to get the image_id so that we can run the container based on the image_id
+  # We will run the docker by refering the tag
+  - docker build -t wahidhoque/docker-frontend -f Dockerfile.dev .
+
+# To run the commands that need to be executed to actually run our test suite
+script:
+  # By default npm run test is an ongoing process,It automatically updates if the code changes, It doesnt end , Testing is considered as succexsfull if the terminal returns 0
+  # To terminate the terminal we added --coverage
+  -  docker run wahidhoque/docker-frontend npm run test -- --coverage
